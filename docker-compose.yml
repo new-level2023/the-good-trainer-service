@@ -1,0 +1,28 @@
+# docker-compose.yml - Only for local debug purposes
+# docker-compose up -d elasticsearch kibana jaeger camunda redis mongo mysql postgres pgadmin
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: the-good-trainer-postgres
+    environment:
+      TZ: UTC
+      POSTGRES_DB: thegoodtrainer_database
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./.postgres_data:/var/lib/postgresql/data
+      # get ip address for connect to pgadmin
+      # docker inspect loc-postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: thegoodtrainer-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
