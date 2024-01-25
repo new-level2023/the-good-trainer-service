@@ -9,7 +9,6 @@ import { UtilsModule } from './utils/utils.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserAddressModule } from './modules/userAddress/userAddress.module';
-import { UserTruckModule } from './modules/userTruck/userTruck.module';
 
 @Module({
   imports: [
@@ -25,7 +24,6 @@ import { UserTruckModule } from './modules/userTruck/userTruck.module';
 
     UserModule,
     UserAddressModule,
-    UserTruckModule,
 
     AuthModule,
   ],
