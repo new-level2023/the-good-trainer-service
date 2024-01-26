@@ -8,9 +8,7 @@ import { UserRepository } from '../repository/user.repository';
 
 @Injectable()
 export class UserService extends UtilsService<User> {
-  constructor(
-    @Inject(UserRepository) private readonly repository: UserRepository,
-  ) {
+  constructor(@Inject(UserRepository) private readonly repository: UserRepository) {
     super();
   }
 
@@ -23,7 +21,6 @@ export class UserService extends UtilsService<User> {
       where: [{ username: user.username }, { email: user.email }],
     });
     if (userDb) throw new ForbiddenException(`User already exists`);
-    const levelNumber = user.role === 'CLIENT' ? 1 : 0;
     // const level = await this.levelService.findOneByFilter({ where: [{ level: levelNumber }] });
     // user.level = level;
     const createdUser = await super.create(user);
