@@ -9,6 +9,10 @@ import { UtilsModule } from './utils/utils.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserAddressModule } from './modules/userAddress/userAddress.module';
+import { RutinesModule } from './modules/rutines/rutines.module';
+import { RutinesxRutinesModule } from './modules/rutinesxrutines/rutinesxrutines.module';
+import { RutinesxChampsModule } from './modules/rutinexchamp/rutinesxchamp.module';
+import { UserTrainerModule } from './modules/userxtrainer/userxtrainer.module';
 
 @Module({
   imports: [
@@ -24,8 +28,11 @@ import { UserAddressModule } from './modules/userAddress/userAddress.module';
 
     UserModule,
     UserAddressModule,
-
+    RutinesModule,
     AuthModule,
+    RutinesxRutinesModule,
+    UserTrainerModule,
+    RutinesxChampsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

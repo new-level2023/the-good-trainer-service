@@ -22,6 +22,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose, Type } from 'class-transformer';
@@ -29,6 +30,8 @@ import { Exclude, Expose, Type } from 'class-transformer';
 import { EntityBase } from '../../../utils/entity/entity-base';
 import { Role } from '../../../utils/enum/role.enum';
 import { UserAddress } from 'src/modules/userAddress/entity/userAddress.entity';
+import { Rutines } from 'src/modules/rutines/entity/rutines.entity';
+import { UserTrainer } from 'src/modules/userxtrainer/entity/userxtrainer.entity';
 
 @Entity()
 export class User extends EntityBase {
@@ -119,6 +122,13 @@ export class User extends EntityBase {
   @ValidateNested()
   @IsArray()
   UserAddress?: UserAddress[];
+
+  @OneToMany(() => Rutines, (rutines) => rutines.trainerId)
+  Rutines?: Rutines[];
+
+  @OneToMany(() => UserAddress, (entity) => entity.user, { eager: false })
+  @JoinColumn([{ name: 'user_id' }, { name: 'id' }])
+  userTrainer?: UserTrainer;
 
   @Column({ nullable: true })
   lastActiveAt?: Date;
