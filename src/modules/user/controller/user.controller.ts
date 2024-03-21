@@ -10,6 +10,7 @@ import {
   Post,
   Put,
   Query,
+  Request,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -105,4 +106,15 @@ export class UserController {
     const { id } = params;
     await this.getService().updateById(id, entity);
   }
+
+  // @Post('assign-trainer')
+  // @UseGuards(JwtAuthGuard, RolesGuard)
+  // @Roles(Role.ADMIN, Role.TRAINER, Role.CHAMP)
+  // @ApiOkResponse({ description: 'User assigned to trainer' })
+  // @ApiNotFoundResponse({ description: 'The user you want to assign does not exist' })
+  // @HttpCode(HttpStatus.NO_CONTENT)
+  // async assignTrainer(@Request() req) {
+  //   const userId = req.user;
+  //   await this.getService().assignTrainer(userId);
+  // }
 }
