@@ -4,7 +4,6 @@ import { IsEnum, IsOptional, IsString } from 'class-validator';
 import { Rutines } from '../entity/gym.entity';
 import { Role } from '../../../utils/enum/role.enum';
 import { PaginationDto, RequestPaginationDto } from '../../../utils/dtos/Pagination.dto';
-import { ValidRutines } from '../enum/valid-rutine.enum';
 import { IsArray, IsNotEmpty } from '@nestjs/class-validator';
 import { Column } from 'typeorm';
 
@@ -38,13 +37,6 @@ export class RutinesDto extends OmitType(Rutines, [
 ] as const) {}
 
 export class CreateRutinesDto extends PartialType(RutinesDto) {
-  @ApiProperty({
-    description: 'Category of Rutine',
-    required: true,
-    example: 'CROSSFIT',
-  })
-  @IsEnum(ValidRutines)
-  public rutineType: ValidRutines;
 
   @ApiProperty({
     description: 'Category of Rutine',
